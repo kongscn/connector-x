@@ -1,9 +1,13 @@
 [package]
-authors = ["Weiyuan Wu <youngw@sfu.ca>"]
+authors = ["SFU Database System Lab <dsl.cs.sfu@gmail.com>"] 
 edition = "2018"
 name = "connectorx-python"
 version = "0.2.4-alpha.9"
-
+documentation = ""
+homepage = ""
+license = "MIT"
+repository = ""
+description = "Load data from databases to dataframes, the fastest way." 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
@@ -54,8 +58,8 @@ pprof = {version = "0.5", features = ["flamegraph", "criterion", "protobuf"]}
 rayon = "1"
 
 [lib]
-crate-type = ["rlib", "cdylib"]
-name = "connectorx_python"
+crate-type = ["cdylib"]
+name = "connectorx"
 
 [features]
 branch = ["connectorx/branch"]
