@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["MsSQLSourceError",""],["MsSQLTypeSystem",""]],"struct":[["FloatN",""],["IntN",""],["MsSQLSource",""],["MsSQLSourceParser",""],["MsSQLSourcePartition",""]]});

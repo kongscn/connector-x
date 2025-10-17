@@ -1,1 +1,0 @@
-initSidebarItems({"struct":[["Dispatcher","A dispatcher takes a `S: Source`, a `D: Destination`, a `TP: Transport` and a vector of `queries` as input to load data from `S` to `D` using the queries."]]});

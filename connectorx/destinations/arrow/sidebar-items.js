@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["ArrowDestinationError",""]],"mod":[["typesystem",""]],"struct":[["ArrowDestination",""],["ArrowPartitionWriter",""]],"type":[["Result",""]]});
