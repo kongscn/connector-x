@@ -7,7 +7,7 @@
 <a href=#7 id=7 data-nosnippet>7</a><span class="attr">#[cfg(feature = <span class="string">"src_mysql"</span>)]
 <a href=#8 id=8 data-nosnippet>8</a></span><span class="kw">use </span><span class="kw">crate</span>::sources::mysql::{MySQLSourceError, MySQLTypeSystem};
 <a href=#9 id=9 data-nosnippet>9</a><span class="attr">#[cfg(feature = <span class="string">"src_oracle"</span>)]
-<a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">use </span><span class="kw">crate</span>::sources::oracle::{connect_oracle, OracleDialect};
+<a href=#10 id=10 data-nosnippet>10</a></span><span class="kw">use </span><span class="kw">crate</span>::sources::oracle::{connect_oracle, OracleDialect, OracleSource};
 <a href=#11 id=11 data-nosnippet>11</a><span class="attr">#[cfg(feature = <span class="string">"src_postgres"</span>)]
 <a href=#12 id=12 data-nosnippet>12</a></span><span class="kw">use </span><span class="kw">crate</span>::sources::postgres::{rewrite_tls_args, PostgresTypeSystem};
 <a href=#13 id=13 data-nosnippet>13</a><span class="attr">#[cfg(feature = <span class="string">"src_trino"</span>)]
@@ -451,8 +451,8 @@
 <a href=#451 id=451 data-nosnippet>451</a><span class="attr">#[cfg(feature = <span class="string">"src_oracle"</span>)]
 <a href=#452 id=452 data-nosnippet>452</a>#[throws(ConnectorXOutError)]
 <a href=#453 id=453 data-nosnippet>453</a></span><span class="kw">fn </span>oracle_get_partition_range(conn: <span class="kw-2">&amp;</span>Url, query: <span class="kw-2">&amp;</span>str, col: <span class="kw-2">&amp;</span>str) -&gt; (i64, i64) {
-<a href=#454 id=454 data-nosnippet>454</a>    <span class="kw">let </span>connector = connect_oracle(conn)<span class="question-mark">?</span>;
-<a href=#455 id=455 data-nosnippet>455</a>    <span class="kw">let </span>conn = connector.connect()<span class="question-mark">?</span>;
+<a href=#454 id=454 data-nosnippet>454</a>    <span class="kw">let </span>source = OracleSource::new(conn.as_str(), <span class="number">1</span>)<span class="question-mark">?</span>;
+<a href=#455 id=455 data-nosnippet>455</a>    <span class="kw">let </span>conn = source.get_conn()<span class="question-mark">?</span>;
 <a href=#456 id=456 data-nosnippet>456</a>    <span class="kw">let </span>range_query = get_partition_range_query(query, col, <span class="kw-2">&amp;</span>OracleDialect {})<span class="question-mark">?</span>;
 <a href=#457 id=457 data-nosnippet>457</a>    <span class="kw">let </span>row = conn.query_row(range_query.as_str(), <span class="kw-2">&amp;</span>[])<span class="question-mark">?</span>;
 <a href=#458 id=458 data-nosnippet>458</a>    <span class="kw">let </span>min_v: i64 = row.get(<span class="number">0</span>).unwrap_or(<span class="number">0</span>);
